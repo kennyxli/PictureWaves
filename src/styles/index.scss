@@ -37,3 +37,53 @@ input[type=range]
     padding: 0 5px;
     position: relative;
 }
+
+
+.card-button {
+  margin-top: 1.75em;
+  position: relative;
+    background: linear-gradient(#ffafbd , #ffc3a0);
+    font-size: 2rem;
+    padding: 5px;
+    border-radius: 50px;
+    display: inline-flex;
+    color: white;
+    outline: none;
+    margin-left: 8px;
+    border: 1px solid rgb(255, 145, 163);
+    &:hover {
+      width: 39.5px;
+      height: 45px;
+      background: linear-gradient(#ffecd0 #fcb69f);
+      background-size: cover;
+      animation: blob-btn 4s infinite;
+      
+    }
+}
+#clear-button{
+  position: relative;
+  left: 10px
+}
+.card-button i {
+  color: #cc2b5e
+}
+
+
+@keyframes blob-btn {
+  0%,
+  100% {
+    border-radius: 69% 39% 29% 79% / 59% 59% 49% 49%;
+  }
+
+  25% {
+    border-radius: 70% 20% 20% 30% / 70% 30% 60% 20%;
+  }
+
+  50% {
+    border-radius: 20% 70% 40% 50% / 40% 40% 60% 51%;
+  }
+
+  75% {
+    border-radius: 40% 60% 70% 30% / 40% 60% 30% 50%;
+  }
+}

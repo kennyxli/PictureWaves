@@ -64,15 +64,26 @@ document.addEventListener('DOMContentLoaded', () =>{
     ctx.fillStyle = bgColor;
     ctx.clearRect(0, 0, canvasEl.width, canvasEl.height)
     ctx.fillRect(0, 0, canvasEl.width, canvasEl.height)
+
+    strokeArray = [];
+    index = -1;
   }
 
   document.getElementById('undo-button').onclick = function(){handleUndo()}
 
   function handleUndo(){
-    
+    if (index <= 0){
+      handleClear()
+    }else{
+      index -= 1;
+      strokeArray.pop();
+      ctx.putImageData(strokeArray[index], 0, 0);
+    }
+
   }
 
-
+  let strokeArray = []
+  let index = -1
 
   let drawing = false;
   
@@ -80,10 +91,16 @@ document.addEventListener('DOMContentLoaded', () =>{
     drawing = true;
     draw(e)
   }
-  function endDrawing(){
+  function endDrawing(e){
     drawing = false;
     ctx.strokeStyle = grad;
     ctx.beginPath()
+    e.preventDefault()
+    if (e.type != 'mousedown'){
+      strokeArray.push(ctx.getImageData(0, 0, canvasEl.width, canvasEl.height))
+      index += 1
+    }
+    console.log(strokeArray)
   }
   
   function draw(e){

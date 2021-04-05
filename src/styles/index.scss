@@ -28,6 +28,10 @@ body{
   margin-bottom: 8px;
 }
 
+.active{
+  border: 4px solid black;
+}
+
 input[type=range]
 {
     writing-mode: bt-lr; 

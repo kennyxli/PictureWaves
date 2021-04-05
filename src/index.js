@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   function handleColor1(){
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(0.01, "yellow");
-    grad.addColorStop(1, "red")
+    grad.addColorStop(1, "red");
   }
   
   document.getElementById("color2").onclick = function(){handleColor2()}

@@ -4,7 +4,7 @@ import * as Tone from 'tone'
 document.addEventListener('DOMContentLoaded', () =>{
   const canvasEl = document.getElementById('canvas');
   canvasEl.width = window.innerWidth - 160 ;
-  canvasEl.height = window.innerHeight  - 160;
+  canvasEl.height = window.innerHeight  - 180;
   const ctx = canvasEl.getContext('2d');
   let bgColor = 'white'
   ctx.fillStyle = bgColor;
@@ -92,35 +92,29 @@ document.addEventListener('DOMContentLoaded', () =>{
 
   let drawing = false;
   
-  let start;
-  function startDrawing(e){
-    drawing = true;
-    start = new Date();
-    draw(e)
-  }
-  const AMinorScale = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
+  const AMinorScale = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
   const addOctaveNumbers = (scale, octaveNumber) => scale.map(note => {
-  const firstOctaveNoteIndex = scale.indexOf('C') !== -1 ? scale.indexOf('C') : scale.indexOf('C#')
-  const noteOctaveNumber = scale.indexOf(note) < firstOctaveNoteIndex ? octaveNumber - 1 : octaveNumber;
-  return `${note}${noteOctaveNumber}`
-});
+    const firstOctaveNoteIndex = scale.indexOf('C') !== -1 ? scale.indexOf('C') : scale.indexOf('C#')
+    const noteOctaveNumber = scale.indexOf(note) < firstOctaveNoteIndex ? octaveNumber - 1 : octaveNumber;
+    return `${note}${noteOctaveNumber}`
+  });
 
-const sampler = new Tone.Sampler({
-	urls: {
-    "C4": "C4.mp3",
-    // "d4": 'd4.mp3'
-		// "D#4": "Ds4.mp3",
-		// "F#4": "Fs4.mp3",
-		"A4": "A4.mp3",
-	},
-	release: 1,
-	baseUrl: "https://tonejs.github.io/audio/salamander/",
-}).toDestination();
+  const sampler = new Tone.Sampler({
+    urls: {
+      "C4": "C4.mp3",
+      // "d4": 'd4.mp3'
+      "D#4": "Ds4.mp3",
+      "F#4": "Fs4.mp3",
+      "A4": "A4.mp3",
+    },
+    release: 1,
+    baseUrl: "https://tonejs.github.io/audio/salamander/",
+  }).toDestination();
 
   function endDrawing(e){
     drawing = false;
     let end = new Date();
-    let delta = (end - start) / 100;
+    let delta = (end - start) / 50;
     if (delta > 6){
       delta = 6;
     }
@@ -128,7 +122,7 @@ const sampler = new Tone.Sampler({
     ctx.beginPath()
     console.log(delta)   
     const now = Tone.now()
-    let dist = ((Math.hypot(e.clientX, e.clientY)/100))
+    let dist = ((Math.hypot(e.clientX, e.clientY)/80))
     console.log(dist)
 
  
@@ -144,14 +138,34 @@ const sampler = new Tone.Sampler({
     }
     console.log(strokeArray)
   }
+  let start;
+  function startDrawing(e){
+    drawing = true;
+    start = new Date();
+    draw(e)
+  }
+
+  function draw(e){
+    if (!drawing) return;
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = 'round'
+    ctx.strokeStyle = grad;
+    
+    ctx.lineTo(e.clientX - 25, e.clientY - 75);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - 25, e.clientY - 75)
+  }
+
+  canvasEl.addEventListener('mousedown', startDrawing)
+  canvasEl.addEventListener('mouseup', endDrawing)
+  canvasEl.addEventListener('mousemove', draw)
   
   document.getElementById('play-button').onclick = function(){handlePlay()}
 
   let idx = 1;
   Tone.Transport.scheduleRepeat(time => {
     if (idx > musicArray.length){
-      // sampler.triggerRelease(time)
-      // Tone.Transport.stop()
       idx = 0;
     }else{
       sampler.triggerAttack(musicArray[idx-1], time);
@@ -172,21 +186,6 @@ const sampler = new Tone.Sampler({
     Tone.Transport.stop()
   }
 
-  function draw(e){
-    if (!drawing) return;
-    ctx.lineWidth = lineWidth;
-    ctx.lineCap = 'round'
-    ctx.strokeStyle = grad;
-    
-    ctx.lineTo(e.clientX - 25, e.clientY - 75);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(e.clientX - 25, e.clientY - 75)
-  }
-
-  canvasEl.addEventListener('mousedown', startDrawing)
-  canvasEl.addEventListener('mouseup', endDrawing)
-  canvasEl.addEventListener('mousemove', draw)
 
 })
 

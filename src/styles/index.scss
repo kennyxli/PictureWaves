@@ -2,8 +2,22 @@
 body{
   margin: 0px;
   padding: 25px;
+  padding-bottom: 0px;
   padding-top: 0px;
   background: lightgray;
+}
+
+body div img {
+  position: relative;
+  top: -3px;
+  width: 175px;
+  height: 100px;
+  margin: 0px;
+}
+#canvas{
+  position: relative;
+  top: -8px;
+  overflow: none;
 }
 
 #outer-canvas{
@@ -15,6 +29,7 @@ body{
   margin-left: 25px;
 }
 
+
 #canvas{
   box-shadow: 0px 0px 5px 5px black;
 
@@ -25,9 +40,10 @@ body{
   border: 1px solid black;
   height: 75px;
   width: 75px;
-  margin-bottom: 8px;
 }
-
+.color-button:hover{
+  cursor: pointer;
+}
 .active{
   border: 4px solid black;
 }
@@ -42,27 +58,72 @@ input[type=range]
     position: relative;
 }
 
+#buttons{
+  position: relative;
+  top: -10px;
+  margin-bottom: 0px;
+  margin-left: 40%;
+  margin-right: 40%;
+}
 
 .card-button {
   margin-top: .5em;
   position: relative;
-    background: linear-gradient(#ffafbd , #ffc3a0);
+  background: linear-gradient(#ffafbd , #ffc3a0);
+  background: linear-gradient(#d0fff2, #cd9ffc);
     font-size: 2rem;
     padding: 5px;
     border-radius: 50px;
     display: inline-flex;
     color: white;
     outline: none;
-    margin-left: 8px;
+    
     border: 1px solid rgb(255, 145, 163);
     &:hover {
+      cursor: pointer;
+      box-shadow: 0px 0px 2px 2px lightblue;
       width: 39.5px;
       height: 45px;
-      background: linear-gradient(#ffecd0 #fcb69f);
+      background: linear-gradient(#ffecd0, #fcb69f);
+        background: linear-gradient(#d0fffe, #9fb5fc);
       background-size: cover;
       animation: blob-btn 4s infinite;
       
     }
+    &:hover i {
+      color:#cc2bbf
+    }
+}
+
+#play-button, #pause-button {
+  padding: 10px;
+  margin-left: 8px;
+  background: linear-gradient(#fe98a9 , #ffd4bb);
+   border: 1px solid rgb(145, 167, 255);
+   border: 1px solid rgb(255, 145, 163);
+  &:hover {
+    cursor:pointer;
+    box-shadow: 0px 0px 2px 2px lightpink;
+      width: 47.2px;
+      height: 55px;
+      background: linear-gradient(#d0fffe, #9fb5fc);
+      background: linear-gradient(#ffecd0, #fcb69f);
+      background-size: cover;
+      animation: blob-btn 4s infinite;
+      
+    }
+    &:hover i {
+      color:rgb(85, 64, 224);
+      color:#cc2bbf;
+    }
+}
+#pause-button:hover{
+  width: 49.5px;
+}
+
+#play-button i, #pause-button i {
+  color:rgb(64, 115, 224);
+  color: #cc2b5e;
 }
 #clear-button{
   position: relative;

@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <h1>PictureWaves</h1>
+    <div>
+      <img src="logo.png">
+    </div>
     <div id="outer-canvas">
       <canvas id="canvas">PictureWave</canvas>
       <div id="outer-color">
@@ -21,11 +23,13 @@
         <input class="color-button" id="color5" type="color" style="width:72px"></div>
         <input type="range" min="1" max="20" value='10' id="pen-width"/>
       </div>
+    </div >
+    <div id="buttons">
+      <button id="undo-button" class="card-button"><i class="fa fa-undo" aria-hidden="true"></i></button>
+      <button id="play-button" class="card-button"><i class="fa fa-play" aria-hidden="true"></i></button>
+      <button id="pause-button" class="card-button"><i class="fa fa-pause" aria-hidden="true"></i></button>
+      <button id="clear-button" class="card-button"><i class="fa fa-trash" aria-hidden="true"></i></button>
     </div>
-    <button id="undo-button" class="card-button"><i class="fa fa-undo" aria-hidden="true"></i></button>
-    <button id="play-button" class="card-button"><i class="fa fa-play" aria-hidden="true"></i></button>
-    <button id="pause-button" class="card-button"><i class="fa fa-pause" aria-hidden="true"></i></button>
-    <button id="clear-button" class="card-button"><i class="fa fa-trash" aria-hidden="true"></i></button>
     <script src="./dist/main.js"></script>
   </body>
 </html>

@@ -4,7 +4,7 @@ import * as Tone from 'tone'
 document.addEventListener('DOMContentLoaded', () =>{
   const canvasEl = document.getElementById('canvas');
   canvasEl.width = window.innerWidth - 160 ;
-  canvasEl.height = window.innerHeight  - 180;
+  canvasEl.height = window.innerHeight  - 160;
   const ctx = canvasEl.getContext('2d');
   let bgColor = 'white'
   ctx.fillStyle = bgColor;
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     grad = element.value
   }
   
-  let lineWidth = 8;  
+  let lineWidth = 5;  
 
   document.getElementById('pen-width').oninput = function(){handleWidth(this)}
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     ctx.fillStyle = bgColor;
     ctx.clearRect(0, 0, canvasEl.width, canvasEl.height)
     ctx.fillRect(0, 0, canvasEl.width, canvasEl.height)
-
+    Tone.Transport.stop()
     strokeArray = [];
     musicArray = [];
     index = -1;
@@ -86,14 +86,16 @@ document.addEventListener('DOMContentLoaded', () =>{
 
   }
 
+
+  
   let strokeArray = []
   let musicArray = []
   let index = -1
 
   let drawing = false;
   
-  const AMinorScale = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
-  const addOctaveNumbers = (scale, octaveNumber) => scale.map(note => {
+  const scaleArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D','E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
+  const octave = (scale, octaveNumber) => scale.map(note => {
     const firstOctaveNoteIndex = scale.indexOf('C') !== -1 ? scale.indexOf('C') : scale.indexOf('C#')
     const noteOctaveNumber = scale.indexOf(note) < firstOctaveNoteIndex ? octaveNumber - 1 : octaveNumber;
     return `${note}${noteOctaveNumber}`
@@ -114,21 +116,21 @@ document.addEventListener('DOMContentLoaded', () =>{
   function endDrawing(e){
     drawing = false;
     let end = new Date();
-    let delta = (end - start) / 50;
+    let delta = (end - start) / 150;
     if (delta > 6){
-      delta = 6;
+      delta = delta % 6;
     }
-    const AMinorScaleWithOctave = addOctaveNumbers(AMinorScale, Math.floor(lineWidth/2));
-    ctx.beginPath()
+    const aMinor = octave(scaleArray, Math.floor(lineWidth));
     console.log(delta)   
     const now = Tone.now()
     let dist = ((Math.hypot(e.clientX, e.clientY)/80))
     console.log(dist)
-
- 
-    musicArray.push(AMinorScaleWithOctave[Math.floor(delta + dist)])
     
-    sampler.triggerAttackRelease( AMinorScaleWithOctave[Math.floor(delta + dist)], now + 1);
+    
+    musicArray.push(aMinor[Math.floor(delta + dist)])
+    
+    sampler.triggerAttackRelease( aMinor[Math.floor(delta + dist)], now + 1);
+    ctx.beginPath()
     ctx.strokeStyle = grad;
     
     e.preventDefault()
@@ -147,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
   function draw(e){
     if (!drawing) return;
-    ctx.lineWidth = lineWidth;
+    ctx.lineWidth = lineWidth * 2;
     ctx.lineCap = 'round'
     ctx.strokeStyle = grad;
     

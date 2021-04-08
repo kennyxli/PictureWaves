@@ -4,19 +4,108 @@ body{
   padding: 25px;
   padding-bottom: 0px;
   padding-top: 0px;
-  background: lightgray;
+      background: linear-gradient(60deg, #d9ee52, #bc3ce7, #23d588, #4d13d4);
+	background-size: 400% 400%;
+	animation: gradient 25s ease infinite;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 body div img {
   position: relative;
-  top: -3px;
-  width: 175px;
-  height: 100px;
+  top: 0px;
+  width: 75px;
+  height: 70px;
   margin: 0px;
 }
-#canvas{
+body div h1{
   position: relative;
-  top: -8px;
+  top: 17px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+}
+
+.fa-cont{
+  margin-left: auto;
+  
+}
+.fa-cont #icon-drop-down  {
+   position: absolute;
+	display: none;
+	top: 72px;
+    right: 132px;
+	background-color: #fff;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+	padding: 10px;
+    width: 245px;
+    height: 355px;
+	z-index: 1;
+	color: darkgray;
+	font-family: 'PT-sans',sans-serif;
+	text-align: left;
+	box-shadow: -1px 4px 6px 1px rgba(0,0,0,0.09);
+    font-weight: initial;
+    border-radius: 5px;
+}
+#icon-drop-down div{
+margin-bottom: 8px;
+font-family: 'Courier New', Courier, monospace;
+color: black;
+}
+#icon-drop-down:before {
+    content: "";
+    width: 4;
+    height: 4;
+    position: absolute;
+    bottom: 100%;
+    right: 78px;
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.1) transparent;    
+}
+#icon-drop-down:after{
+  content: "";
+    width: 4;
+    height: 4;
+    position: absolute;
+    bottom: 100%;
+    right: 80px;
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: #fff transparent;  
+}
+.fa-cont:hover #icon-drop-down{
+  display:block;
+}
+.icons:before{
+  position: relative;
+ right: 105px;
+  top: 35px;
+  font-size: 35px;
+  margin-right: 5px;
+  color: black;
+  
+}
+.icons:hover{
+  cursor: pointer;
+}
+.fa-question-circle:before{
+  
+  color: rgb(70, 70, 70);
+  font-size: 36px;
+}
+#canvas{
+
   overflow: none;
 }
 
@@ -40,30 +129,27 @@ body div img {
   border: 1px solid black;
   height: 75px;
   width: 75px;
+  margin-bottom: 8px;
 }
-.color-button:hover{
+.color-button:hover, #pen-width:hover{
   cursor: pointer;
 }
 .active{
   border: 4px solid black;
 }
 
-input[type=range]
-{
-    writing-mode: bt-lr; 
-    -webkit-appearance: slider-vertical;
-    width: 8px;
-    height: 125px;
-    padding: 0 5px;
-    position: relative;
+#pen-width{
+  position: absolute;
+  left: 225px;
+  top: 35px;
 }
 
 #buttons{
   position: relative;
-  top: -10px;
+  top: -5px;
   margin-bottom: 0px;
-  margin-left: 40%;
-  margin-right: 40%;
+  margin-left: 45%;
+  margin-right: 35%;
 }
 
 .card-button {
@@ -128,6 +214,9 @@ input[type=range]
 #clear-button{
   position: relative;
   left: 10px
+}
+#clear-button:hover{
+  width: 37px;
 }
 .card-button i {
   color: #cc2b5e

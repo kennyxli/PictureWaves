@@ -2,6 +2,7 @@ import "./styles/index.scss";
 import * as Tone from 'tone'
 
 document.addEventListener('DOMContentLoaded', () =>{
+  const page = document.getElementById('page-body');
   const canvasEl = document.getElementById('canvas');
   canvasEl.width = window.innerWidth - 160 ;
   canvasEl.height = window.innerHeight  - 160;
@@ -15,6 +16,19 @@ document.addEventListener('DOMContentLoaded', () =>{
   grad.addColorStop(0, "yellow");
   grad.addColorStop(1, "salmon")
   
+  let sampler = new Tone.Sampler({
+    urls: {
+      "C5": "C5.mp3",
+      // "d4": 'd4.mp3'
+      // "D#4": "Ds4.mp3",
+      // "F#4": "Fs4.mp3",
+      "A5": "A5.mp3",
+    },
+    release: 1,
+    baseUrl: "https://tonejs.github.io/audio/salamander/",
+  }).toDestination();
+
+
   document.getElementById("color1").onclick = function(){handleColor1()}
   
   function handleColor1(){
@@ -22,15 +36,37 @@ document.addEventListener('DOMContentLoaded', () =>{
     grad.addColorStop(0.01, "yellow");
     grad.addColorStop(1, "red");
     
+    sampler = new Tone.Sampler({
+      urls: {
+        "C7": "C7.mp3",
+        // "d4": 'd4.mp3'
+        // "D#4": "Ds4.mp3",
+        // "F#4": "Fs4.mp3",
+        "A7": "A7.mp3",
+      },
+      release: 1,
+      baseUrl: "https://tonejs.github.io/audio/salamander/",
+    }).toDestination();
+    
   }
-  
   document.getElementById("color2").onclick = function(){handleColor2()}
   
   function handleColor2(){
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(1, "violet");
     grad.addColorStop(0, "darkblue");
+
+    sampler = new Tone.Sampler({
+    urls: {
+      "D#4": "Ds4.mp3",
+      "A2": "A2.mp3",
+    },
+    release: 1,
+    baseUrl: "https://tonejs.github.io/audio/salamander/",
+    }).toDestination();
   }
+  
+  
   
   document.getElementById("color3").onclick = function(){handleColor3()}
   
@@ -38,6 +74,14 @@ document.addEventListener('DOMContentLoaded', () =>{
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(1, "darkgreen");
     grad.addColorStop(0, "aqua");
+
+    sampler = new Tone.Sampler({
+      urls: {
+          C1: "C1.mp3",
+          A1: "A1.mp3",
+      },
+      baseUrl: "https://tonejs.github.io/audio/casio/",
+    }).toDestination();
   }
   document.getElementById("color4").onclick = function(){handleColor4()}
   
@@ -101,36 +145,40 @@ document.addEventListener('DOMContentLoaded', () =>{
     return `${note}${noteOctaveNumber}`
   });
 
-  const sampler = new Tone.Sampler({
-    urls: {
-      "C4": "C4.mp3",
-      // "d4": 'd4.mp3'
-      "D#4": "Ds4.mp3",
-      "F#4": "Fs4.mp3",
-      "A4": "A4.mp3",
-    },
-    release: 1,
-    baseUrl: "https://tonejs.github.io/audio/salamander/",
-  }).toDestination();
-
-  function endDrawing(e){
-    drawing = false;
+  
+  function startDrawing(e){
+    e.preventDefault()
+    drawing = true;
     let end = new Date();
-    let delta = (end - start) / 150;
+    let delta = (end - start) / 300;
     if (delta > 6){
       delta = delta % 6;
     }
     const aMinor = octave(scaleArray, Math.floor(lineWidth));
     console.log(delta)   
     const now = Tone.now()
-    let dist = ((Math.hypot(e.clientX, e.clientY)/80))
+    let dist = ((Math.hypot(e.clientX, e.clientY)/50))
     console.log(dist)
     
     
-    musicArray.push(aMinor[Math.floor(delta + dist)])
+    musicArray.push(aMinor[Math.floor( dist + delta)])
     
-    sampler.triggerAttackRelease( aMinor[Math.floor(delta + dist)], now + 1);
+    sampler.triggerAttackRelease( aMinor[Math.floor( dist + delta)], now + 1);
+    draw(e)
+  }
+  
+  let start = 0;
+  function endDrawing(e){
+    drawing = false;
+    start = new Date();
+    
+    
+    // musicArray.push(aMinor[Math.floor(delta + dist)])
+    
+    // sampler.triggerAttackRelease( aMinor[Math.floor(delta + dist)], now + 1);
     ctx.beginPath()
+    ctx.stroke();
+    ctx.closePath()
     ctx.strokeStyle = grad;
     
     e.preventDefault()
@@ -140,29 +188,28 @@ document.addEventListener('DOMContentLoaded', () =>{
     }
     console.log(strokeArray)
   }
-  let start;
-  function startDrawing(e){
-    drawing = true;
-    start = new Date();
-    draw(e)
-  }
 
   function draw(e){
     if (!drawing) return;
     ctx.lineWidth = lineWidth * 2;
     ctx.lineCap = 'round'
+    ctx.lineJoin = "round"
     ctx.strokeStyle = grad;
     
-    ctx.lineTo(e.clientX - 25, e.clientY - 75);
+  
+    ctx.lineTo(e.clientX - canvasEl.offsetLeft, e.clientY - canvasEl.offsetTop);
     ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(e.clientX - 25, e.clientY - 75)
+   
   }
 
+  function outOfPage(){
+    drawing = false;
+    ctx.beginPath();
+  }
   canvasEl.addEventListener('mousedown', startDrawing)
   canvasEl.addEventListener('mouseup', endDrawing)
   canvasEl.addEventListener('mousemove', draw)
-  
+  page.addEventListener('mouseover', outOfPage)
   document.getElementById('play-button').onclick = function(){handlePlay()}
 
   let idx = 1;

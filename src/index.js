@@ -183,11 +183,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     if (delta > 6){
       delta = delta % 6;
     }
-    const aMinor = octave(scaleArray, Math.floor(lineWidth));
-    console.log(delta)   
+    const aMinor = octave(scaleArray, Math.floor(lineWidth)); 
     const now = Tone.now()
     let dist = ((Math.hypot(e.clientX, e.clientY)/50))
-    console.log(dist)
     
     
     musicArray.push(aMinor[Math.floor( dist + delta)])
@@ -215,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () =>{
       strokeArray.push(ctx.getImageData(0, 0, canvasEl.width, canvasEl.height))
       index += 1
     }
-    console.log(strokeArray)
   }
 
   function draw(e){
@@ -247,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () =>{
       idx = 0;
     }else{
       sampler.triggerAttack(musicArray[idx-1], time);
-      console.log(musicArray)
     }
     idx ++;
   }, "4n")

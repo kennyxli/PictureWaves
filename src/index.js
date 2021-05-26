@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   document.getElementById("color1").onclick = function(){handleColor1()}
   
   function handleColor1(){
-    debugger
+    
     document.getElementById('color1').style.border = '4px solid black';
     document.getElementById('color2').style.border = 'none';
     document.getElementById('color3').style.border = 'none';

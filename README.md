@@ -1,6 +1,6 @@
 ## PictureWaves
 
-<img src="/picturewaves.gif" width="1000" height="500" />
+![](https://media.giphy.com/media/l0GafoAOagJTd1gUGr/giphy.gif)
 
 # Brief Overview:
 

@@ -38,6 +38,24 @@ body div h1{
   margin-left: auto;
   
 }
+
+.how-to-play{
+  font-weight: 600;
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+    right: 110px;
+    top: 40px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 6px;
+}
+
+.how-to-play:hover{
+  cursor: pointer;
+}
+
 .fa-cont #icon-drop-down  {
    position: absolute;
 	display: none;

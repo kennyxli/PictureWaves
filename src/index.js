@@ -12,10 +12,14 @@ document.addEventListener('DOMContentLoaded', () =>{
   ctx.fillRect(0,0, canvas.width, canvas.height)
   
 
+
+
   let grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height);
   grad.addColorStop(0, "yellow");
   grad.addColorStop(1, "salmon")
   
+  
+
   let sampler = new Tone.Sampler({
     urls: {
       "C4": "C4.mp3",
@@ -26,15 +30,22 @@ document.addEventListener('DOMContentLoaded', () =>{
     }).toDestination();
 
 
-
+  
   document.getElementById("color1").onclick = function(){handleColor1()}
   
   function handleColor1(){
+    debugger
+    document.getElementById('color1').style.border = '4px solid black';
+    document.getElementById('color2').style.border = 'none';
+    document.getElementById('color3').style.border = 'none';
+    document.getElementById('color4').style.border = 'none';
+    document.getElementById('color5').style.border = 'none';
+    document.getElementById('color1').style.transition = 'all 200ms ease-out'
+
     scaleArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D','E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(0.01, "yellow");
     grad.addColorStop(1, "red");
-    
 
     sampler = new Tone.Sampler({
       urls: {
@@ -52,6 +63,12 @@ document.addEventListener('DOMContentLoaded', () =>{
   document.getElementById("color2").onclick = function(){handleColor2()}
   
   function handleColor2(){
+    document.getElementById('color2').style.border = '4px solid black';
+    document.getElementById('color1').style.border = 'none';
+    document.getElementById('color3').style.border = 'none';
+    document.getElementById('color4').style.border = 'none';
+    document.getElementById('color5').style.border = 'none';
+    document.getElementById('color2').style.transition = 'all 200ms ease-out'
     scaleArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D','E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(1, "violet");
@@ -76,6 +93,12 @@ document.addEventListener('DOMContentLoaded', () =>{
   document.getElementById("color3").onclick = function(){handleColor3()}
   
   function handleColor3(){
+     document.getElementById('color3').style.border = '4px solid black';
+     document.getElementById('color1').style.border = 'none';
+    document.getElementById('color2').style.border = 'none';
+    document.getElementById('color4').style.border = 'none';
+    document.getElementById('color5').style.border = 'none';
+    document.getElementById('color3').style.transition = 'all 200ms ease-out'
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(1, "darkgreen");
     grad.addColorStop(0, "aqua");
@@ -83,9 +106,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     sampler = new Tone.Sampler({
       urls: {
-      // "D#3": "Ds3.mp3",
+      "D#3": "Ds3.mp3",
         "F#3": "Fs3.mp3",
-      // "D#4": "Ds4.mp3",
+      "D#4": "Ds4.mp3",
         "F#4": "Fs4.mp3",
       },
       release: 1,
@@ -95,6 +118,12 @@ document.addEventListener('DOMContentLoaded', () =>{
   document.getElementById("color4").onclick = function(){handleColor4()}
  
   function handleColor4(){
+     document.getElementById('color4').style.border = '4px solid black';
+     document.getElementById('color1').style.border = 'none';
+    document.getElementById('color2').style.border = 'none';
+    document.getElementById('color3').style.border = 'none';
+    document.getElementById('color5').style.border = 'none';
+    document.getElementById('color4').style.transition = 'all 200ms ease-out'
     scaleArray = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#']
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(1, 'palegreen');
@@ -105,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         // "d4": 'd4.mp3'
         // "D#2": "Ds2.mp3",
         // "D#4": "Ds4.mp3",
-        "A6": "A6.mp3",
+        "A4": "A4.mp3",
       },
       baseUrl: "https://tonejs.github.io/audio/salamander/",
     }).toDestination();
@@ -113,6 +142,12 @@ document.addEventListener('DOMContentLoaded', () =>{
   document.getElementById('color5').oninput = function(){handleColor5(this)}
 
   function handleColor5(element){
+    document.getElementById('color5').style.border = '4px solid black';
+    document.getElementById('color1').style.border = 'none';
+    document.getElementById('color2').style.border = 'none';
+    document.getElementById('color3').style.border = 'none';
+    document.getElementById('color4').style.border = 'none';
+    document.getElementById('color5').style.transition = 'all 200ms ease-out'
     scaleArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D','E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
     grad = element.value
    sampler = new Tone.Sampler({

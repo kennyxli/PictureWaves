@@ -12,36 +12,47 @@ document.addEventListener('DOMContentLoaded', () =>{
   ctx.fillRect(0,0, canvas.width, canvas.height)
   
 
+
+
   let grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height);
   grad.addColorStop(0, "yellow");
   grad.addColorStop(1, "salmon")
   
+  
+
   let sampler = new Tone.Sampler({
     urls: {
-      "C5": "C5.mp3",
-      // "d4": 'd4.mp3'
-      // "D#4": "Ds4.mp3",
-      // "F#4": "Fs4.mp3",
-      "A5": "A5.mp3",
+      "C4": "C4.mp3",
+      "A4": "A4.mp3",
     },
     release: 1,
     baseUrl: "https://tonejs.github.io/audio/salamander/",
-  }).toDestination();
+    }).toDestination();
 
 
+  
   document.getElementById("color1").onclick = function(){handleColor1()}
   
   function handleColor1(){
+    
+    document.getElementById('color1').style.border = '4px solid black';
+    document.getElementById('color2').style.border = 'none';
+    document.getElementById('color3').style.border = 'none';
+    document.getElementById('color4').style.border = 'none';
+    document.getElementById('color5').style.border = 'none';
+    document.getElementById('color1').style.transition = 'all 200ms ease-out'
+
+    scaleArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D','E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(0.01, "yellow");
     grad.addColorStop(1, "red");
-    
+
     sampler = new Tone.Sampler({
       urls: {
         "C7": "C7.mp3",
         // "d4": 'd4.mp3'
-        // "D#4": "Ds4.mp3",
-        // "F#4": "Fs4.mp3",
+        "D#1": "Ds1.mp3",
+        "F#1": "Fs1.mp3",
         "A7": "A7.mp3",
       },
       release: 1,
@@ -52,18 +63,29 @@ document.addEventListener('DOMContentLoaded', () =>{
   document.getElementById("color2").onclick = function(){handleColor2()}
   
   function handleColor2(){
+    document.getElementById('color2').style.border = '4px solid black';
+    document.getElementById('color1').style.border = 'none';
+    document.getElementById('color3').style.border = 'none';
+    document.getElementById('color4').style.border = 'none';
+    document.getElementById('color5').style.border = 'none';
+    document.getElementById('color2').style.transition = 'all 200ms ease-out'
+    scaleArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D','E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(1, "violet");
     grad.addColorStop(0, "darkblue");
 
     sampler = new Tone.Sampler({
     urls: {
-      "D#4": "Ds4.mp3",
-      "A2": "A2.mp3",
+      "C5": "C5.mp3",
+      // "d4": 'd4.mp3'
+      // "D#4": "Ds4.mp3",
+      // "F#4": "Fs4.mp3",
+      "A5": "A5.mp3",
+      
     },
     release: 1,
     baseUrl: "https://tonejs.github.io/audio/salamander/",
-    }).toDestination();
+  }).toDestination();
   }
   
   
@@ -71,29 +93,71 @@ document.addEventListener('DOMContentLoaded', () =>{
   document.getElementById("color3").onclick = function(){handleColor3()}
   
   function handleColor3(){
+     document.getElementById('color3').style.border = '4px solid black';
+     document.getElementById('color1').style.border = 'none';
+    document.getElementById('color2').style.border = 'none';
+    document.getElementById('color4').style.border = 'none';
+    document.getElementById('color5').style.border = 'none';
+    document.getElementById('color3').style.transition = 'all 200ms ease-out'
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(1, "darkgreen");
     grad.addColorStop(0, "aqua");
+    scaleArray = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#']
 
     sampler = new Tone.Sampler({
       urls: {
-          C1: "C1.mp3",
-          A1: "A1.mp3",
+      "D#3": "Ds3.mp3",
+        "F#3": "Fs3.mp3",
+      "D#4": "Ds4.mp3",
+        "F#4": "Fs4.mp3",
       },
-      baseUrl: "https://tonejs.github.io/audio/casio/",
+      release: 1,
+      baseUrl: "https://tonejs.github.io/audio/salamander/",
     }).toDestination();
   }
   document.getElementById("color4").onclick = function(){handleColor4()}
-  
+ 
   function handleColor4(){
+     document.getElementById('color4').style.border = '4px solid black';
+     document.getElementById('color1').style.border = 'none';
+    document.getElementById('color2').style.border = 'none';
+    document.getElementById('color3').style.border = 'none';
+    document.getElementById('color5').style.border = 'none';
+    document.getElementById('color4').style.transition = 'all 200ms ease-out'
+    scaleArray = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#','A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#']
     grad= ctx.createLinearGradient(0, 0, canvasEl.width, canvasEl.height)
     grad.addColorStop(1, 'palegreen');
     grad.addColorStop(0, "orangered");
+    sampler = new Tone.Sampler({
+      urls: {
+         "C4": "C4.mp3",
+        // "d4": 'd4.mp3'
+        // "D#2": "Ds2.mp3",
+        // "D#4": "Ds4.mp3",
+        "A4": "A4.mp3",
+      },
+      baseUrl: "https://tonejs.github.io/audio/salamander/",
+    }).toDestination();
   }
   document.getElementById('color5').oninput = function(){handleColor5(this)}
 
   function handleColor5(element){
+    document.getElementById('color5').style.border = '4px solid black';
+    document.getElementById('color1').style.border = 'none';
+    document.getElementById('color2').style.border = 'none';
+    document.getElementById('color3').style.border = 'none';
+    document.getElementById('color4').style.border = 'none';
+    document.getElementById('color5').style.transition = 'all 200ms ease-out'
+    scaleArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D','E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
     grad = element.value
+   sampler = new Tone.Sampler({
+    urls: {
+      "C4": "C4.mp3",
+      "A4": "A4.mp3",
+    },
+    release: 1,
+    baseUrl: "https://tonejs.github.io/audio/salamander/",
+    }).toDestination();
   }
   
   let lineWidth = 5;  
@@ -138,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
   let drawing = false;
   
-  const scaleArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D','E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
+  let scaleArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D','E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D'];
   const octave = (scale, octaveNumber) => scale.map(note => {
     const firstOctaveNoteIndex = scale.indexOf('C') !== -1 ? scale.indexOf('C') : scale.indexOf('C#')
     const noteOctaveNumber = scale.indexOf(note) < firstOctaveNoteIndex ? octaveNumber - 1 : octaveNumber;
@@ -154,11 +218,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     if (delta > 6){
       delta = delta % 6;
     }
-    const aMinor = octave(scaleArray, Math.floor(lineWidth));
-    console.log(delta)   
+    const aMinor = octave(scaleArray, Math.floor(lineWidth)); 
     const now = Tone.now()
     let dist = ((Math.hypot(e.clientX, e.clientY)/50))
-    console.log(dist)
     
     
     musicArray.push(aMinor[Math.floor( dist + delta)])
@@ -186,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () =>{
       strokeArray.push(ctx.getImageData(0, 0, canvasEl.width, canvasEl.height))
       index += 1
     }
-    console.log(strokeArray)
   }
 
   function draw(e){
@@ -218,7 +279,6 @@ document.addEventListener('DOMContentLoaded', () =>{
       idx = 0;
     }else{
       sampler.triggerAttack(musicArray[idx-1], time);
-      console.log(musicArray)
     }
     idx ++;
   }, "4n")

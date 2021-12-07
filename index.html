@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
+    
     <meta name="description" content="PictureWaves is a creative way to make music">
 
     <meta property="og:title" content="PictureWaves"/>
-    <meta property="og:image" content="logo.png"/>
+    <meta property="og:image" content="./dist/assets/images/logo.png"/>
     <meta property="og:description" content="PictureWaves is a creative way to make music"/>
     <meta property="og:url" content="https://kennyxli.github.io/PictureWaves/"/>
-
+    
     <link rel="stylesheet" href="./dist/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>JS Project Skeleton</title>
+    <title>PictureWaves</title>
+    <link rel="icon" type="image/jpg" href="./logo.png" />
   </head>
 
   <body id="page-body">
@@ -22,7 +23,8 @@
       <img src="logo.png">
       <h1>PictureWaves</h1>
       <div class="fa-cont">
-        <i class="fa fa-question-circle icons" aria-hidden="true"></i>
+        <!-- <i class="fa fa-question-circle icons" aria-hidden="true"></i> -->
+        <button class="how-to-play">How to Play</button>
         <div id="icon-drop-down">
           <div >Welcome to PictureWaves! </div> 
           <div>Make sure to have your sound on.</div>
@@ -32,8 +34,8 @@
           <div>Click the play button to hear your masterpiece! It will play the notes in the order you drew it.</div>
         </div>
       </div>
-      <a href="https://github.com/kennyxli" ><i class="fa fa-github icons" aria-hidden="true" ></i></a>
-      <a href="https://www.linkedin.com/in/kenny-li-793b6b15b/"><i class="fa fa-linkedin-square icons" aria-hidden="true"></i></a>
+      <a href="https://github.com/kennyxli" target="_blank"><i class="fa fa-github icons" aria-hidden="true" ></i></a>
+      <a href="https://www.linkedin.com/in/kenny-li-793b6b15b/" target="_blank"><i class="fa fa-linkedin-square icons" aria-hidden="true"></i></a>
     </div>
     <div id="outer-canvas">
       <canvas id="canvas">PictureWave</canvas>

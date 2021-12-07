@@ -1,5 +1,7 @@
 ## PictureWaves
 
+![](https://media.giphy.com/media/l0GafoAOagJTd1gUGr/giphy.gif)
+
 # Brief Overview:
 
 PictureWaves: Allow the user to draw shapes that produce sounds. You can put it into a loop or allow sound while drawing.
@@ -9,9 +11,8 @@ PictureWaves: Allow the user to draw shapes that produce sounds. You can put it 
 In PictureWaves, users will be able to:
 
 - Draw on a canvas. Each drawing will produce a sound
-- Put it on loop. It will sound off each of the drawings from left to right.
-- Change the sound/color of drawing
-- Play a demo drawing
+- Play the sounds in a loop. It will sound off each of the drawings from left to right.
+- Change the sound/color/brush size of the drawing
 
 
 # Architecture and Technology
